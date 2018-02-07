@@ -27,3 +27,8 @@ if __name__ == '__main__' :
         print(soroban.nbr_2)
         rep = int(input())
         soroban.check_rep(rep)
+        nbr_rep -= 1
+        print("Nombre de répétitions restantes : ", nbr_rep)
+
+#Introduire choix du nombre de Nombre
+#Introduire choix addition/soustraction/multiplication
