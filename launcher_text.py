@@ -1,13 +1,14 @@
 import count_error as ce
 import calcul as ca
-import backups_files as bf
+import data as dt
+import time
 
 class LauncherText:
     def __init__(self):
         self.error = ce.CountError()
         self.calcul = ca.Calcul()
         self.total = 0
-        self.data = bf.Files()
+        self.data = dt.Files()
 
     def check_rep(self, rep, total):
         correct = total
@@ -21,6 +22,7 @@ class LauncherText:
             return True
 
     def run(self, type_calcul, nbr_rep, nbr, valeur_min, valeur_max):
+        time_1 = time.time()
         for play in range(nbr_rep):
             if type_calcul == "A":
                 self.total = self.calcul.addition(nbr, valeur_min, valeur_max)
@@ -32,9 +34,12 @@ class LauncherText:
             self.error.is_correct(self.check_rep(rep, self.total))
             nbr_rep -= 1
             print("Nombre de répétitions restantes : ", nbr_rep)
-        print("Nombre total d'erreur : ", self.error.nbr_error)
+        total_time = time.time() - time_1
+        print("Nombre d'erreur : ", self.error.nbr_error)
+        print("Temps : ", total_time)
         print("Partie précédente : ", self.data.load_data())
-        self.data.save_data(str(soroban.error.nbr_error))
+        self.data.save_data(str(soroban.error.nbr_error), str(total_time))
+
 
 if __name__ == '__main__' :
     print("Addition (A) / Soustraction (S) / Multiplication (M) ?")
