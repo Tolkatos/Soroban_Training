@@ -32,8 +32,9 @@ class LauncherText:
             self.error.is_correct(self.check_rep(rep, self.total))
             nbr_rep -= 1
             print("Nombre de répétitions restantes : ", nbr_rep)
-        print("Nombre total d'erreur : ", soroban.error.nbr_error)
-
+        print("Nombre total d'erreur : ", self.error.nbr_error)
+        print("Partie précédente : ", self.data.load_data())
+        self.data.save_data(str(soroban.error.nbr_error))
 
 if __name__ == '__main__' :
     print("Addition (A) / Soustraction (S) / Multiplication (M) ?")
